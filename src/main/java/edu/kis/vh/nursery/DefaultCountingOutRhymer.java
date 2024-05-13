@@ -7,19 +7,22 @@ public class DefaultCountingOutRhymer {
     public static final int EMPTY = -1;
     final private int[] numbers = new int[MAX_SIZE];
 
-    public int total = TOT;
+    public int getTotal() {
+        return total;
+    }
 
+    private int total = EMPTY;
 
-    public void countIn(int in) {
+    protected void countIn(int in) {
         if (!isFull())
             numbers[++total] = in;
     }
 
-    final public boolean callCheck() {
-        return total == TOT;
+    protected boolean callCheck() {
+        return total == EMPTY;
     }
 
-    final public boolean isFull() {
+    protected boolean isFull() {
         return total == MAX_SIZE - 1;
     }
 
@@ -29,7 +32,7 @@ public class DefaultCountingOutRhymer {
         return numbers[total];
     }
 
-    public int countOut() {
+    protected int countOut() {
         if (callCheck())
             return EMPTY;
         return numbers[total--];
